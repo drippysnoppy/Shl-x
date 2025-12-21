@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>xG Scatter</title>
+</head>
+<body style="font-family:Arial, sans-serif; margin:0; background:#171717;">
+
+  <div style="max-width:1200px; margin:24px auto; padding:0 16px;">
+    <div style="margin-bottom:14px; color:#bbb;">
+      Välj lag och position. Min GP: 15
+    </div>
+
+    <div style="margin-bottom:12px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+      <label style="font-weight:600; color:#bbb;">Lag:</label>
+      <select id="teamSelect" style="padding:8px 10px; font-size:16px;">
+        <option value="brynas-if">Brynäs IF</option>
+<option value="djurgardens-if">Djurgårdens IF</option>
+<option value="frolunda-hc">Frölunda HC</option>
+<option value="farjestad-bk">Färjestad BK</option>
+<option value="hv71">HV71</option>
+<option value="leksands-if">Leksands IF</option>
+<option value="linkoping-hc">Linköping HC</option>
+<option value="lulea-hockey">Luleå Hockey</option>
+<option value="malmo-redhawks">Malmö Redhawks</option>
+<option value="rogle-bk">Rögle BK</option>
+<option value="skelleftea-aik">Skellefteå AIK</option>
+<option value="timra-ik">Timrå IK</option>
+<option value="vaxjo-lakers">Växjö Lakers</option>
+<option value="orebro-hockey">Örebro Hockey</option>
+      </select>
+
+      <label style="font-weight:600; color:#bbb; margin-left:10px;">Position:</label>
+      <select id="posSelect" style="padding:8px 10px; font-size:16px;">
+        <option value="F">Forward</option>
+        <option value="D">Defenseman</option>
+      </select>
+    </div>
+
+    <div style="width:100%;">
+      <img id="chartImg" src="" alt="xG scatter"
+           style="width:100%; height:auto; border-radius:8px; display:block;">
+    </div>
+  </div>
+
+  <script>
+    const teamSel = document.getElementById("teamSelect");
+    const posSel  = document.getElementById("posSelect");
+    const img     = document.getElementById("chartImg");
+
+    function updateImage() {
+      img.src = teamSel.value + "__" + posSel.value + ".png";
+    }
+
+    teamSel.addEventListener("change", updateImage);
+    posSel.addEventListener("change", updateImage);
+
+    updateImage();
+  </script>
+
+</body>
+</html>
